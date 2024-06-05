@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+   
+    {% if data %}
+        <div class='d-flex flex-wrap' style="max-width: 1024px; margin: auto;"> 
+            {% for post in data  %}
+            <div class="card" style="width: 18rem; margin: 20px;">
+                <div class="card-body">
+                <h5 class="card-title">Task Id: {{post.id}} </h5>
+                <h5 class="card-title">Task Name: {{post.taskTitle}} </h5>
+                <p class="card-text">Task Assigned Date: {{post.assign_date}} </p>
+                <p class="card-text">Task Description: {{post.taskDescription}} </p>
+                <p class="card-text">Task Category: 
+                    
+                    {% for category in post.categories.all %}
+                        <span>{{ category.categoryName }}</span>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                            
+                </p>
+                <div>
+                    
+                    {% if post.is_completed %}
+                        <p class="d-block border border-1 text-center text-light bg-success" style="padding: 8px 0; font-size: 18px; border-radius: 20px;">Completed</p>
+                    {% else %}
+                        <a href="{% url 'edit_post' post.id %} "><button type="button" class="btn btn-primary">Edit</button></a>
+                        <a href="{% url 'delete_post' post.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}
+                        
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        
+        </div>  
+        
+    {% else %}
+        <h1 class="text-center">There are no task here yet.</h1>
+        <h1 class="text-center">Add task and it's category to see them</h1>
+    {% endif %}
+        
+    
+
+    
+          
+{% endblock content %}
+    

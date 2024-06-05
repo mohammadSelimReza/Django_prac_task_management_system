@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+
 urlpatterns = [
-    path('add/', views.taskAdd, name='addTask')
+    path('add/', views.addTask, name='addTask'),
+    path('edit/<int:id>', views.edit_post, name='edit_post'),
+    path('delete/<int:id>', views.delete_post, name='delete_post'),
 ]

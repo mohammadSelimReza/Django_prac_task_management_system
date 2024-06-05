@@ -2,6 +2,11 @@
 
 
 {% block content %}
-    <h1 class="text-center">Index page</h1>
+    <h1 class='text-center'> Welcome to Task Mangement System</h1>
+    <div class="d-flex flex-column justify-content-center items-align-center" style="width: 25%;margin: auto;">
+        <a href="{% url 'addTask' %}"><button style="margin: 20px 0;width: 100%;">Click Here to Add New Task</button></a>
+        <a href="{% url 'addCategory' %}"><button style="margin: 20px 0;width: 100%;">Click Here to Add Catagory</button></a>
+        <a href="{% url 'showAll' %}"><button style="margin: 20px 0;width: 100%;">Click Here to see all added Task</button></a>
+    </div>
 {% endblock content %}
     
